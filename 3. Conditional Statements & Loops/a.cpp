@@ -58,24 +58,20 @@ using namespace std;
 //     return 0;
 // }
 
-int main()
-{
-    int n;
-    cout << "enter n";
-    cin >> n;
-
-    bool numPrime = true;
-
-    for (int i = 2; i < n; i++)
-    {
-        if (n % i == 0)
-        {
-            numPrime = false;
-            break;
-        }
-    }
-
-    numPrime ? cout << "prime" : cout << "not prime";
-
-    return 0;
-}
+// int main()
+// {
+//     int n;
+//     cout << "enter n";
+//     cin >> n;
+//     bool numPrime = true;
+//     for (int i = 2; i < n; i++)
+//     {
+//         if (n % i == 0)
+//         {
+//             numPrime = false;
+//             break;
+//         }
+//     }
+//     numPrime ? cout << "prime" : cout << "not prime";
+//     return 0;
+// }
