@@ -75,3 +75,66 @@ using namespace std;
 //     numPrime ? cout << "prime" : cout << "not prime";
 //     return 0;
 // }
+
+// #include <iostream>
+
+// using namespace std;
+
+// int main()
+// {
+//     int n = 3;
+// for (int i = 1; i <= n; i++)
+// {
+//     for (int j = 1; j <= n; j++)
+//     {
+//         cout << j << " ";
+//     }
+//     cout << "\n";
+// }
+
+// char ch;
+// for (int i = 0; i < n; i++)
+// {
+//     ch = 'A';
+//     for (int j = 0; j < n; j++)
+//     {
+//         cout << ch << " ";
+//         ch += 1;
+//     }
+//     cout << "\n";
+// }
+
+//     return 0;
+// }
+
+// int main()
+// {
+//     int n = 5;
+//     int num = 1;
+//     for (int i = 0; i < n; i++)
+//     {
+//         for (int j = 0; j < n; j++)
+//         {
+//             cout << num << "\t";
+//             num++;
+//         }
+//         cout << "\n";
+//     }
+//     return 0;
+// }
+
+// int main()
+// {
+//     int n = 3;
+//     char ch = 65;
+//     for (int i = 0; i < n; i++)
+//     {
+//         for (int j = 0; j < n; j++)
+//         {
+//             cout << ch << "\t";
+//             ch++;
+//         }
+//         cout << "\n";
+//     }
+//     return 0;
+// }
