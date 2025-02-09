@@ -1,0 +1,17 @@
+-8 to binary :
+
+first - one's compliment -> 1 - 0, 0 - 1 -> numbers will change.
+
+second - two's compliment -> +1 --> plus one to the number.
+
+(10110) of base 2 = -(8) of base 10
+
+----------------------------------------------------------------
+
+10110 to decimanl :
+
+first - one's compliment -> +1;
+
+second - two's compliment -> change 0 - 1, 1 - 0;
+
+(-8) of base 10 = (10110) of base 2.

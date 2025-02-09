@@ -98,6 +98,36 @@ using namespace std;
 //     return currentTerm;
 // }
 
+// int decimalToBinary(int decimalNum)
+// {
+//     int ans = 0;
+//     int remainder, pow = 1;
+//     while (decimalNum > 0)
+//     {
+//         remainder = decimalNum % 2;
+//         decimalNum = decimalNum / 2;
+//         ans = ans + (remainder * pow);
+//         pow *= 10;
+//     }
+//     return ans;
+// }
+
+int biToDec(int number)
+{
+    int ans = 0;
+    int pow = 1;
+    while (number > 0)
+    {
+        int remainder = number % 10;
+        if (remainder == 1)
+        {
+            ans = ans + pow;
+        }
+        pow = pow * 2;
+        number = number / 10;
+    }
+    return ans;
+}
 int main()
 {
     int n;
@@ -109,5 +139,6 @@ int main()
     // cout << getBinomialCoefficient(6, 3);
     // printPrimeNumbers(n);
     // cout << findFibonacci(n);
+    cout << biToDec(n);
     return 0;
 }
