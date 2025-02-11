@@ -25,19 +25,44 @@ using namespace std;
 //     return 0;
 // }
 
-int main()
-{
-    int n;
-    int remainder = 0;
-    bool powerOf2 = false;
+// int main()
+// {
+//     int n;
+//     int remainder = 0;
+//     bool powerOf2 = true;
 
-    cout << "enter n :";
-    cin >> n;
+//     cout << "enter n : ";
+//     cin >> n;
 
-    while (remainder = 0)
-    {
-        remainder = n % 2;
-        n = n / 2;
-    }
-    return 0;
-}
+//     while (n > 1)
+//     {
+//         if (n % 2 != 0)
+//         {
+//             powerOf2 = false;
+//             break;
+//         }
+//         n = n / 2;
+//     }
+//     cout << powerOf2;
+//     return 0;
+// }
+
+// int main()
+// {
+//     int n;
+//     int remainder = 0;
+//     int revNum = 0;
+
+//     cout << "enter n : ";
+//     cin >> n;
+
+//     while (n > 0)
+//     {
+//         remainder = n % 10;
+//         revNum = (revNum * 10) + remainder;
+//         n = n / 10;
+//     }
+//     cout << revNum;
+
+//     return 0;
+// }
