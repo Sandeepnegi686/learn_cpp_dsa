@@ -15,3 +15,22 @@ first - one's compliment -> +1;
 second - two's compliment -> change 0 - 1, 1 - 0;
 
 (-8) of base 10 = (10110) of base 2.
+
+----------------------------------------------------------------
+
+int ;
+int will store -2**31 to +2**31 -1
+
+long int ;
+long wil give at least 4 bytes of memory.
+-2**63  to  +2**63 - 1
+
+short int;
+short will give 2 bytes of memory.
+
+signed; 
+by default we have signed data types like int. because they store both negative and postive value.
+
+unsigned;
+unsigned will store only postive number.
+it can store up to 0 to 2**32 - 1.
