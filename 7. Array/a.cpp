@@ -104,21 +104,60 @@ void printArray(int arr[], int size)
     }
 }
 
+// int main()
+// {
+//     int numbers[] = {
+//         1,
+//         2,
+//         3,
+//         4,
+//         5,
+//         6,
+//         7,
+//         8,
+//         9};
+//     int size = sizeof(numbers) / sizeof(int);
+
+//     printArray(numbers, size);
+
+//     return 0;
+// }
+
 int main()
 {
-    int numbers[] = {
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9};
-    int size = sizeof(numbers) / sizeof(int);
+    int num1[] = {1, 2, 3, 4, 5, 6};
+    int num2[] = {4, 5, 6, 7, 8, 9, 6};
 
-    printArray(numbers, size);
+    int newArr[6] = {0};
+
+    int size1 = 6;
+    int size2 = 7;
+
+    for (int i = 0, k = 0; i < size1; i++)
+    {
+        for (int j = 0; j < size2; j++)
+        {
+            if (num1[i] == num2[j])
+            {
+                bool alreadyExist = false;
+                for (int l = 0; l < sizeof(newArr) / 4; l++)
+                {
+                    if (num1[i] == newArr[l])
+                    {
+                        alreadyExist = true;
+                        break;
+                    }
+                }
+                if (!alreadyExist)
+                {
+                    newArr[k] = num1[i];
+                    k++;
+                }
+            }
+        }
+    }
+
+    printArray(newArr, 6);
 
     return 0;
 }
