@@ -1,0 +1,16 @@
+STL : Standard Template Lib
+
+STL Containers
+
+We use Vectors so that we create more size dynamically.
+
+==> "g++ -std=c++11 a.cpp" this code to run files.
+
+Vector Functions: 
+size.  -- vec.size()
+push_back.  -- vec.push_back(1)  -- push number at end.
+pop_back.  -- vec.pop_back()  --remove element from end.
+front.  --.front()  --to access first element
+back.  --.back()  --to access last element
+at.  --.at(i = index)  --to access value at particular index 
+capacity -- it will give the capacity of a vector. If we push one element and the capacity is full, then it will double the capacity.
