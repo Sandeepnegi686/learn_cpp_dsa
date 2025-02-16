@@ -69,30 +69,64 @@ using namespace std;
 // #include <vector>
 // using namespace std;
 
+// int main()
+// {
+//     vector<int> array = {1, -2, 3, 4, -5, -6};
+//     int maxSum = INT_MIN;
+//     int size = array.size();
+
+//     for (int i = 0; i < size; i++)
+//     {
+//         for (int j = i; j < size; j++)
+//         {
+//             int s_arr = 0;
+//             for (int k = i; k <= j; k++)
+//             {
+//                 s_arr += array[k];
+//                 cout << array[k];
+//             }
+//             cout << " ";
+//             if (maxSum < s_arr)
+//             {
+//                 maxSum = s_arr;
+//             }
+//         }
+//         cout << "\n";
+//     }
+//     cout << "Max sub array sum is " << maxSum;
+//     return 0;
+// }
+
+// int main()
+// {
+//     int max_Sum = INT_MIN;
+//     vector<int> array = {1, -2, 3, 4, -5, -6};
+//     int size = array.size();
+
+//     for (int i = 0; i < size; i++)
+//     {
+//         int s_arr = 0;
+//         for (int j = i; j < size; j++)
+//         {
+//             s_arr += array[j];
+//             max_Sum = max(max_Sum, s_arr);
+//         }
+//     }
+
+//     cout << "Max sub array sum is " << max_Sum;
+
+//     return 0;
+// }
+
 int main()
 {
-    vector<int> array = {1, 2, 3, 4, 5};
-    int maxSum = INT_MIN;
-    int size = array.size();
+    int sum = 0;
+    int max_Sum = INT_MIN;
+    vector<int> nums = {4, 1, 2, 1, 2};
 
-    for (int i = 0; i < size; i++)
+    for (int num : nums)
     {
-        for (int j = i; j < size; j++)
-        {
-            int s_arr = 0;
-            for (int k = i; k <= j; k++)
-            {
-                s_arr += array[k];
-                cout << array[k];
-            }
-            cout << " ";
-            if (maxSum < s_arr)
-            {
-                maxSum = s_arr;
-            }
-        }
-        cout << "\n";
+        sum = sum ^ num;
     }
-    cout << "Max sub array sum is " << maxSum;
-    return 0;
+    return sum;
 }
