@@ -118,15 +118,35 @@ using namespace std;
 //     return 0;
 // }
 
+// int main()
+// {
+//     int sum = 0;
+//     int max_Sum = INT_MIN;
+//     vector<int> nums = {4, 1, 2, 1, 2};
+
+//     for (int num : nums)
+//     {
+//         sum = sum ^ num;
+//     }
+//     return sum;
+// }
+
 int main()
 {
-    int sum = 0;
-    int max_Sum = INT_MIN;
-    vector<int> nums = {4, 1, 2, 1, 2};
+    vector<int> prices = {7, 1, 5, 3, 6, 4};
+    int bestBuy = prices[0];
+    int maxProfit = 0;
 
-    for (int num : nums)
+    for (int i = 1; i < prices.size(); i++)
     {
-        sum = sum ^ num;
+        if (prices[i] > bestBuy)
+        {
+            maxProfit = max(maxProfit, prices[i] - bestBuy);
+        }
+        bestBuy = min(bestBuy, prices[i]);
     }
-    return sum;
+
+    return maxProfit;
+
+    return 0;
 }
