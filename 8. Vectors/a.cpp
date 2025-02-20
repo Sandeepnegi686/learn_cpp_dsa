@@ -131,22 +131,44 @@ using namespace std;
 //     return sum;
 // }
 
-int main()
-{
-    vector<int> prices = {7, 1, 5, 3, 6, 4};
-    int bestBuy = prices[0];
-    int maxProfit = 0;
+// int main()
+// {
+//     vector<int> prices = {7, 1, 5, 3, 6, 4};
+//     int bestBuy = prices[0];
+//     int maxProfit = 0;
 
-    for (int i = 1; i < prices.size(); i++)
-    {
-        if (prices[i] > bestBuy)
-        {
-            maxProfit = max(maxProfit, prices[i] - bestBuy);
-        }
-        bestBuy = min(bestBuy, prices[i]);
-    }
+//     for (int i = 1; i < prices.size(); i++)
+//     {
+//         if (prices[i] > bestBuy)
+//         {
+//             maxProfit = max(maxProfit, prices[i] - bestBuy);
+//         }
+//         bestBuy = min(bestBuy, prices[i]);
+//     }
 
-    return maxProfit;
+//     return maxProfit;
 
-    return 0;
-}
+//     return 0;
+// }
+
+// int main()
+// {
+//     vector<int> heights = {8, 7, 2, 1};
+//     // vector<int> heights = {1, 8, 6, 2, 5, 4, 8, 3, 7};
+//     int maxWater = 0;
+
+//     int l = 0;
+//     int r = heights.size() - 1;
+
+//     while (l < r)
+//     {
+//         int height = min(heights[l], heights[r]);
+//         int width = r - l;
+//         int area = height * width;
+//         maxWater = max(maxWater, area);
+//         heights[l] < heights[r] ? l++ : r--;
+//     }
+//     cout << maxWater;
+
+//     return 0;
+// }
