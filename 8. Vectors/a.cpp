@@ -172,3 +172,40 @@ using namespace std;
 
 //     return 0;
 // }
+// int main()
+// {
+//     vector<int> nums = {-1, 1, 0, -3, 3};
+//     vector<int> ans(nums.size(), 0);
+
+//     int product = 1;
+//     bool zero = false;
+
+//     for (int i = 0; i < nums.size(); i++)
+//     {
+//         if (nums[i] == 0)
+//         {
+//             zero = true;
+//             continue;
+//         }
+//         product *= nums[i];
+//     }
+
+//     for (int i = 0; i < nums.size(); i++)
+//     {
+//         if (nums[i] == 0)
+//         {
+//             ans[i] = product;
+//         }
+//         else
+//         {
+//             ans[i] = zero ? 0 : product / nums[i];
+//         }
+//     }
+
+//     for (int i = 0; i < nums.size(); i++)
+//     {
+//         cout << ans[i] << " ";
+//     }
+
+//     return 0;
+// }
