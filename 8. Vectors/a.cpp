@@ -209,3 +209,37 @@ using namespace std;
 
 //     return 0;
 // }
+
+void printArray(vector<int> array, int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        cout << array[i] << "\t";
+    }
+}
+
+int main()
+{
+
+    vector<int> nums = {1, 2, 3, 4};
+    int n = nums.size();
+    vector<int> ans(n, 1);
+
+    int product = nums[0];
+    for (int i = 1; i < n; i++)
+    {
+        ans[i] = product;
+        product = product * nums[i];
+    }
+
+    product = nums[n - 1];
+    for (int i = n - 2; i >= 0; i--)
+    {
+        ans[i] = product;
+        product = product * nums[i];
+    }
+
+    printArray(ans, n);
+
+    return 0;
+}
