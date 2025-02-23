@@ -1,0 +1,17 @@
+//Pointers
+
+//Pointers Arithmatic
+Increment ++, Decrement --
+
+ptr++ => it will increment the address my 1 datatype.
+For Ex.: ptr++ => ptr + 1
+
+-----------------------------------------------
+//This ptr will point to the array 0th index. and *(ptr + 1) will increse the pointer by one integer.
+
+int arr[] = {10, 20, 30, 40};
+int *ptr = arr;
+
+cout << *(ptr + 1) << endl;
+-----------------------------------------------
+Dereferencing => Dereferencing means to change the value by a address which is stored by pointer.
