@@ -107,16 +107,48 @@ using namespace std;
 //     return 0;
 // }
 
-int main()
-{
-    int arr[] = {10, 20, 30, 40};
-    int *ptr = arr;
+// int main()
+// {
+//     int arr[] = {10, 20, 30, 40};
+//     int *ptr = arr;
 
-    cout << *(ptr + 1) << endl;
-    cout << *(ptr + 3) << endl;
+//     cout << *(ptr + 1) << endl;
+//     cout << *(ptr + 3) << endl;
 
-    ptr++;
-    cout << *ptr << endl;
+//     ptr++;
+//     cout << *ptr << endl;
 
-    return 0;
-}
+//     return 0;
+// }
+
+// int main()
+// {
+//     vector<int> numbers = {-1, 0, 3, 4, 5, 9, 12};
+//     int target = 3;
+//     int n = numbers.size();
+
+//     int st = 0;
+//     int end = n - 1;
+//     int mid = -1;
+
+//     while (st <= end)
+//     {
+//         mid = (st + end) / 2;
+//         if (numbers[mid] < target)
+//         {
+//             st = mid + 1;
+//         }
+//         else if (numbers[mid] > target)
+//         {
+//             end = mid - 1;
+//         }
+//         else
+//         {
+//             cout << mid;
+//             return mid;
+//         }
+//     }
+//     cout << mid;
+
+//     return 0;
+// }
