@@ -178,29 +178,61 @@ using namespace std;
 //     return -1;
 // }
 
-int binarySearch(vector<int> array, int target, int start, int end)
-{
-    int mid = start + ((end - start) / 2);
-    if (array[mid] < target)
-    {
-        return binarySearch(array, target, mid + 1, end); // 2 3
-    }
-    else if (array[mid] > target)
-    {
-        return binarySearch(array, target, start, mid - 1); // 1
-    }
-    else if (array[mid] == target)
-    {
-        return mid;
-    }
-    return -1;
-}
+// int binarySearch(vector<int> array, int target, int start, int end)
+// {
+//     if (start <= end)
+//     {
+
+//         int mid = start + ((end - start) / 2);
+//         if (array[mid] < target)
+//         {
+//             return binarySearch(array, target, mid + 1, end); // 2 3
+//         }
+//         else if (array[mid] > target)
+//         {
+//             return binarySearch(array, target, start, mid - 1); // 1
+//         }
+//         else if (array[mid] == target)
+//         {
+//             return mid;
+//         }
+//     }
+//     else
+//     {
+//         return -1;
+//     }
+// }
+// int binarySearch(vector<int> array, int target)
+// {
+//     //{-1, 0, 3, 4, 5, 9, 12}
+//     int t = 3;
+//     int st = 0;
+//     int end = array.size() - 1;
+//     while (st <= end)
+//     {
+//         int mid = st + ((end - st) / 2);
+
+//         if (array[mid] < target)
+//         {
+//             st = mid + 1;
+//         }
+//         else if (array[mid] > target)
+//         {
+//             end = mid - 1;
+//         }
+//         else if (array[mid] == target)
+//         {
+//             return mid;
+//         }
+//     }
+//     return -1;
+// }
 
 int main()
 {
     vector<int> numbers = {-1, 0, 3, 4, 5, 9, 12};
     int target = 1;
     int n = numbers.size() - 1;
-    cout << binarySearch(numbers, target, 0, n - 1);
+    cout << binarySearch(numbers, target);
     return 0;
 }
