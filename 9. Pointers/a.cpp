@@ -227,12 +227,50 @@ using namespace std;
 //     }
 //     return -1;
 // }
+//[4,5,6,7,0,1,2]
+int rotatedSortedArray(vector<int> array, int target)
+{
+    int st = 0;
+    int end = array.size() - 1;
+
+    while (st <= end)
+    {
+        int mid = st + ((end - st) / 2);
+        if (array[mid] == target)
+            return mid;
+
+        if (array[st] <= array[mid])
+        { // left sorted
+            if (array[st] <= target && target <= array[mid])
+            {
+                end = mid - 1;
+            }
+            else
+            {
+                st = mid + 1;
+            }
+        }
+        else
+        { // right sorted
+            if (array[mid] <= target && target <= array[end])
+            {
+                st = mid + 1;
+            }
+            else
+            {
+                end = mid - 1;
+            }
+        }
+    }
+
+    return -1;
+}
 
 int main()
 {
-    vector<int> numbers = {-1, 0, 3, 4, 5, 9, 12};
-    int target = 1;
+    vector<int> numbers = {4, 5, 6, 7, 0, 1, 2};
+    int target = 9;
     int n = numbers.size() - 1;
-    cout << binarySearch(numbers, target);
+    cout << rotatedSortedArray(numbers, target);
     return 0;
 }
