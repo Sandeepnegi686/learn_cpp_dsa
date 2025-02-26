@@ -228,49 +228,72 @@ using namespace std;
 //     return -1;
 // }
 //[4,5,6,7,0,1,2]
-int rotatedSortedArray(vector<int> array, int target)
-{
-    int st = 0;
-    int end = array.size() - 1;
+// int rotatedSortedArray(vector<int> array, int target)
+// {
+//     int st = 0;
+//     int end = array.size() - 1;
 
-    while (st <= end)
+//     while (st <= end)
+//     {
+//         int mid = st + ((end - st) / 2);
+//         if (array[mid] == target)
+//             return mid;
+
+//         if (array[st] <= array[mid])
+//         { // left sorted
+//             if (array[st] <= target && target <= array[mid])
+//             {
+//                 end = mid - 1;
+//             }
+//             else
+//             {
+//                 st = mid + 1;
+//             }
+//         }
+//         else
+//         { // right sorted
+//             if (array[mid] <= target && target <= array[end])
+//             {
+//                 st = mid + 1;
+//             }
+//             else
+//             {
+//                 end = mid - 1;
+//             }
+//         }
+//     }
+
+//     return -1;
+// }
+
+int peakIndexInMountainArray(vector<int> arr)
+{
+    int st = 1;
+    int end = arr.size() - 2;
+    while (st < end)
     {
         int mid = st + ((end - st) / 2);
-        if (array[mid] == target)
+        if (arr[mid - 1]<arr[mid]> arr[mid + 1])
+        {
             return mid;
-
-        if (array[st] <= array[mid])
-        { // left sorted
-            if (array[st] <= target && target <= array[mid])
-            {
-                end = mid - 1;
-            }
-            else
-            {
-                st = mid + 1;
-            }
         }
-        else
-        { // right sorted
-            if (array[mid] <= target && target <= array[end])
-            {
-                st = mid + 1;
-            }
-            else
-            {
-                end = mid - 1;
-            }
+
+        if (arr[mid - 1] < arr[mid])
+        {
+            st = mid + 1;
+        }
+        else if (arr[mid] > arr[mid + 1])
+        {
+            end = mid - 1;
         }
     }
-
-    return -1;
 }
 
 int main()
 {
-    vector<int> numbers = {4, 5, 6, 7, 0, 1, 2};
-    int target = 9;
-    int n = numbers.size() - 1;
-    cout << rotatedSortedArray(numbers, target);
+    vector<int> numbers = {4, 5, 6, 7, 8, 4, 2, 1};
+    // int target = 9;
+    // int n = numbers.size() - 1;
+    cout << peakIndexInMountainArray(numbers);
     return 0;
 }
