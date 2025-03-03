@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <limits.h>
 
 using namespace std;
 
@@ -266,34 +267,147 @@ using namespace std;
 //     return -1;
 // }
 
-int peakIndexInMountainArray(vector<int> arr)
-{
-    int st = 1;
-    int end = arr.size() - 2;
-    while (st < end)
-    {
-        int mid = st + ((end - st) / 2);
-        if (arr[mid - 1]<arr[mid]> arr[mid + 1])
-        {
-            return mid;
-        }
+// int peakIndexInMountainArray(vector<int> arr)
+// {
+//     int st = 1;
+//     int end = arr.size() - 2;
+//     while (st < end)
+//     {
+//         int mid = st + ((end - st) / 2);
+//         if (arr[mid - 1]<arr[mid]> arr[mid + 1])
+//         {
+//             return mid;
+//         }
+//         if (arr[mid - 1] < arr[mid])
+//         {
+//             st = mid + 1;
+//         }
+//         else if (arr[mid] > arr[mid + 1])
+//         {
+//             end = mid - 1;
+//         }
+//     }
+// }
 
-        if (arr[mid - 1] < arr[mid])
-        {
-            st = mid + 1;
-        }
-        else if (arr[mid] > arr[mid + 1])
-        {
-            end = mid - 1;
-        }
-    }
-}
+// int singleNonDuplicate(vector<int> nums)
+// {
+//     int st = 0;
+//     int end = nums.size() - 1;
+//     while (st <= end)
+//     {
+//         int mid = st + ((end - st) / 2);
+//         if (nums[mid] != nums[mid - 1] && nums[mid] != nums[mid + 1])
+//             return nums[mid];
+//         if (nums[mid] == nums[mid - 1])
+//         {
+//             st = mid + 1;
+//         }
+//         else
+//         {
+//             end = mid - 1;
+//         }
+//     }
+//     return -1;
+// }
 
-int main()
-{
-    vector<int> numbers = {4, 5, 6, 7, 8, 4, 2, 1};
-    // int target = 9;
-    // int n = numbers.size() - 1;
-    cout << peakIndexInMountainArray(numbers);
-    return 0;
-}
+// int singleNonDuplicate(vector<int> arr)
+// {
+//     int st = 0;
+//     int end = arr.size() - 1;
+
+//     while (st <= end)
+//     {
+//         int mid = st + ((end - st) / 2);
+//         if (arr[mid - 1] != arr[mid] && arr[mid] != arr[mid + 1])
+//             return arr[mid];
+//         if (mid % 2 == 0)
+//         {
+//             if (arr[mid - 1] == arr[mid])
+//             {
+//                 end = mid - 1;
+//             }
+//             else
+//             {
+//                 st = mid + 1;
+//             }
+//         }
+//         else
+//         {
+//             if (arr[mid - 1] == arr[mid])
+//             {
+//                 st = mid + 1;
+//             }
+//             else
+//             {
+//                 end = mid - 1;
+//             }
+//         }
+//     }
+//     return -1;
+// }
+
+// [12, 34, 67, 90], k = 2
+
+// int maxInArray(vector<int> arr)
+// {
+//     int maxNum = INT_MIN;
+//     for (int i = 0; i < arr.size(); i++)
+//     {
+//         maxNum = max(maxNum, arr[i]);
+//     }
+//     return maxNum;
+// }
+// int sumOfArray(vector<int> arr)
+// {
+//     int sum = 0;
+//     for (int i = 0; i < arr.size(); i++)
+//     {
+//         sum += arr[i];
+//     }
+//     return sum;
+// }
+// int stdCount(vector<int> arr, int pagePerStu)
+// {
+//     int stu = 1, pageStudent = 0;
+//     for (int i = 0; i < arr.size(); i++)
+//     {
+//         if (pageStudent + arr[i] <= pagePerStu)
+//         {
+//             pageStudent += arr[i];
+//         }
+//         else
+//         {
+//             stu++;
+//             pageStudent = arr[i];
+//         }
+//     }
+//     return stu;
+// }
+
+// int findPages(vector<int> arr, int k)
+// {
+//     int student = 4;
+//     int low = maxInArray(arr);
+//     int high = sumOfArray(arr);
+//     cout << low << "\n";
+//     cout << high << "\n";
+//     cout << "\n";
+//     for (int i = low; i <= high; i++)
+//     {
+//         int countNoOfStu = stdCount(arr, i);
+//         if (countNoOfStu == student)
+//         {
+//             return i;
+//         }
+//     }
+// }
+
+// int main()
+// {
+// vector<int> numbers = {10, 20, 30};
+// int target = 9;
+// int n = numbers.size() - 1;
+//     cout << findPages(numbers, 2);
+
+//     return 0;
+// }
