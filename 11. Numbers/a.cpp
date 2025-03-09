@@ -108,6 +108,7 @@ int getGCD(int n1, int n2)
 
 int main()
 {
+
     // cout << noOfDigits(94) << endl;
     // int c = 2345;
     // int nOfDigit = 0;
