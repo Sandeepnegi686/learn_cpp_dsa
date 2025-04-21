@@ -106,18 +106,50 @@ int getGCD(int n1, int n2)
     return a > 0 ? a : b;
 }
 
+vector<int> sortArr(vector<int> nums)
+{
+    int low = 0;
+    int mid = 0;
+    int high = nums.size() - 1;
+
+    while (mid <= high)
+    {
+        if (nums[mid] == 0)
+        {
+            swap(nums[low], nums[mid]);
+            low++;
+            mid++;
+        }
+        else if (nums[mid] == 1)
+        {
+            mid++;
+        }
+        else
+        {
+            swap(nums[mid], nums[high]);
+            high--;
+        }
+    }
+    return nums;
+}
+
 int main()
 {
 
-    // cout << noOfDigits(94) << endl;
-    // int c = 2345;
-    // int nOfDigit = 0;
-    // while (c > 0)
-    // {
-    //     nOfDigit++;
-    //     c = c / 10;
-    // }
-    // printAllDivisors(36);
-    cout << getGCD(10, 15);
+    vector<int> arr = {1, 1, 0, 0, 2, 1};
+    for (int i = 0; i < arr.size(); i++)
+    {
+        cout << arr[i] << " ";
+    }
+
+    cout << "\n";
+
+    vector<int> a = sortArr(arr);
+
+    for (int i = 0; i < a.size(); i++)
+    {
+        cout << a[i] << " ";
+    }
+
     return 0;
 }
