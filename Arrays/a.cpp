@@ -75,11 +75,52 @@ double myPow(double x, int n)
     return ans;
 }
 
+int majorityElement(vector<int> nums)
+{
+    int count = 1, maxNum = nums[0];
+    for (int i = 1; i < nums.size(); i++)
+    {
+        if (maxNum == nums[i])
+        {
+            count++;
+        }
+        else
+        {
+            count--;
+        }
+        if (count > nums.size() / 2)
+            return maxNum;
+        if (count == 0)
+        {
+            maxNum = nums[i];
+            count++;
+        }
+    }
+    return maxNum;
+}
+
+int maxProfit(vector<int> nums)
+{
+    int mp = 0, sp = nums[0];
+    for (int i = 1; i < nums.size(); i++)
+    {
+        if (sp < nums[i])
+        {
+            mp = max(mp, nums[i] - sp);
+        }
+        if (sp > nums[i])
+        {
+            sp = nums[i];
+        }
+    }
+    return mp;
+}
+
 int main()
 {
-    vector<int> nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+    vector<int> nums = {7, 1, 5, 3, 6, 4};
 
-    int ans = myPow(2.0, 6);
+    int ans = maxProfit(nums);
 
     // printVector(ans);
     cout << ans;
