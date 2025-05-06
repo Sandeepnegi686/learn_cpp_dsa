@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <climits>
 
 using namespace std;
 
@@ -212,13 +213,63 @@ int allocateBooks(vector<int> books, int k)
     return ans;
 }
 
+bool canPaint(vector<int> woods, int p, int paintsPerWorker)
+{
+    int painter = 1;
+    int paints = 0;
+    for (int i = 0; i < woods.size(); i++)
+    {
+        if (p < painter)
+            return false;
+        if (paints + woods[i] <= paintsPerWorker)
+        {
+            paints += woods[i];
+        }
+        else
+        {
+            painter++;
+            paints = woods[i];
+        }
+    }
+    return painter > p ? false : true;
+}
+
+int minTime(vector<int> arr, int k)
+{
+    if (arr.size() < k)
+        return -1;
+    // code here
+    int minTime = -1;
+    int start = INT_MAX, end = 0;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        start = start > arr[i] ? arr[i] : start;
+        end += arr[i];
+    }
+    while (start <= end)
+    {
+        int mid = (start + end) / 2;
+        if (canPaint(arr, k, mid))
+        {
+            end = mid - 1;
+            minTime = mid;
+        }
+        else
+        {
+            start = mid + 1;
+        }
+    }
+    // return minimum time
+    return minTime;
+}
+
 int main()
 {
-    vector<int> nums = {2, 1, 3, 4};
+    vector<int> nums = {40, 30, 10, 20};
     // int target = 5;
     // int start = 0, end = nums.size() - 1;
 
-    cout << allocateBooks(nums, 2);
+    cout << minTime(nums, 2);
 
     return 0;
 }
