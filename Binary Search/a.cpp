@@ -1,8 +1,18 @@
 #include <iostream>
 #include <vector>
 #include <climits>
+#include <algorithm>
 
 using namespace std;
+
+void printVector(vector<int> numbers)
+{
+
+    for (int i = 0; i < numbers.size(); i++)
+    {
+        cout << numbers[i] << " ";
+    }
+}
 
 int normalBinarySearch(vector<int> nums, int target)
 {
@@ -263,13 +273,85 @@ int minTime(vector<int> arr, int k)
     return minTime;
 }
 
+bool canWePlaceCows(vector<int> arr, int cows, int maxDistace)
+{
+    int cow = 1, lastDistance = arr[0];
+    for (int i = 1; i <= arr.size(); i++)
+    {
+        if (arr[i] - lastDistance >= maxDistace)
+        {
+            cow++;
+            lastDistance = arr[i];
+        }
+        if (cow == cows)
+        {
+            return true;
+        }
+    }
+    return cow >= cows ? true : false;
+}
+
+int maxCowsDistance(vector<int> arr, int c)
+{
+    if (arr.size() < c)
+        return -1;
+    int maxDistance = -1;
+
+    sort(arr.begin(), arr.end());
+
+    int minDist = INT_MAX, maxDist = -1;
+
+    for (int i = 0; i < arr.size(); i++)
+    {
+        minDist = min(minDist, arr[i]);
+        maxDist = max(maxDist, arr[i]);
+    }
+
+    maxDist = maxDist - minDist;
+
+    for (int i = minDist; i <= maxDist; i++)
+    {
+        if (canWePlaceCows(arr, c, i))
+        {
+            maxDistance = i;
+            continue;
+        }
+        else
+        {
+            return maxDistance;
+        }
+    }
+    return maxDistance;
+}
+
+int maxCowsDistanceUsingBinarySearch(vector<int> stalls, int k)
+{
+    if (stalls.size() < k)
+        return -1;
+    sort(stalls.begin(), stalls.end());
+    int ans = -1;
+    int minDist = 0, maxDist = stalls[stalls.size() - 1] - stalls[0];
+    while (minDist <= maxDist)
+    {
+        int mid = (minDist + maxDist) / 2;
+        if (canWePlaceCows(stalls, k, mid))
+        {
+            minDist = mid + 1;
+            ans = mid;
+        }
+        else
+        {
+            maxDist = mid - 1;
+        }
+    }
+    return ans;
+}
+
 int main()
 {
-    vector<int> nums = {40, 30, 10, 20};
-    // int target = 5;
-    // int start = 0, end = nums.size() - 1;
+    vector<int> nums = {7, 13, 11};
 
-    cout << minTime(nums, 2);
+    cout << maxCowsDistanceUsingBinarySearch(nums, 3);
 
     return 0;
 }
