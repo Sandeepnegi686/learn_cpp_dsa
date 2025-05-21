@@ -120,6 +120,24 @@ vector<int> mergeTwoSortedArray(vector<int> &arr1, vector<int> &arr2)
 
 vector<int> merge(vector<int> &a1, int m, vector<int> &a2, int n)
 {
+    int index = m + n - 1;
+    int i = m - 1;
+    int j = n - 1;
+    while (i >= 0 && j >= 0)
+    {
+        if (a1[i] >= a2[j])
+        {
+            a1[index--] = a1[i--];
+        }
+        else
+        {
+            a1[index--] = a2[j--];
+        }
+    }
+    if (j >= 0)
+    {
+        a1[index--] = a2[j--];
+    }
 }
 
 int main()
@@ -127,13 +145,13 @@ int main()
     // vector<int> nums = {1, 0, 2, 2, 1, 0, 2, 1, 0, 2, 1};
     // vector<int> ans = zeroOneTwo(nums);
 
-    vector<int> arr1 = {0, 1, 3, 5};
+    vector<int> arr1 = {0, 1, 3, 5, 0, 0, 0, 0, 0, 0};
     vector<int> arr2 = {0, 2, 4, 6, 8, 10};
 
-    mergeTwoSortedArray(arr1, arr2);
+    merge(arr1, 4, arr2, 6);
 
     printVector(arr1);
-    printVector(arr2);
+    // printVector(arr2);
 
     return 0;
 }
