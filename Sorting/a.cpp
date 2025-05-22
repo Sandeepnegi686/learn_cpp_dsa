@@ -140,17 +140,58 @@ vector<int> merge(vector<int> &a1, int m, vector<int> &a2, int n)
     }
 }
 
+void swapIfGreater(vector<int> &a1, vector<int> &a2, int idx1, int idx2)
+{
+    if (a1[idx1] > a2[idx2])
+    {
+        swap(a1[idx1], a2[idx2]);
+    }
+}
+vector<int> mergeUsingGap(vector<int> &a1, int m, vector<int> &a2, int n)
+{
+    int len = m + n;
+    int gap = (len / 2) + (len % 2);
+    int c = 0;
+    while (gap > 0)
+    {
+        int l = 0;
+        int r = gap;
+        while (r < len)
+        {
+            if ((l < m) && (r >= m))
+            {
+                swapIfGreater(a1, a2, l, r - m);
+            }
+            else if (l >= m)
+            {
+                swapIfGreater(a2, a2, l - m, r - m);
+            }
+            else
+            {
+                swapIfGreater(a1, a1, l, r);
+            }
+            l++, r++, c++;
+        }
+        if (gap == 1)
+            break;
+        gap = (gap / 2) + (gap % 2);
+    }
+    cout << " counter run " << c << endl;
+}
 int main()
 {
     // vector<int> nums = {1, 0, 2, 2, 1, 0, 2, 1, 0, 2, 1};
     // vector<int> ans = zeroOneTwo(nums);
 
-    vector<int> arr1 = {0, 1, 3, 5, 0, 0, 0, 0, 0, 0};
-    vector<int> arr2 = {0, 2, 4, 6, 8, 10};
+    // vector<int> arr1 = {0, 1, 3, 5, 0, 0, 0, 0, 0, 0};
+    // vector<int> arr2 = {0, 2, 4, 6, 8, 10};
+    vector<int> arr1 = {1, 3, 5, 7};
+    vector<int> arr2 = {2, 4, 6, 8, 10};
 
-    merge(arr1, 4, arr2, 6);
+    mergeUsingGap(arr1, 4, arr2, 5);
 
     printVector(arr1);
+    printVector(arr2);
     // printVector(arr2);
 
     return 0;
