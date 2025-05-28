@@ -1,0 +1,8 @@
+#include <math.h>   <-- library for maths calculation.
+#include <string.h>   <-- library for string functions.
+
+c++ Standard Template Library is divided into 4 parts:
+1. Algorithms.
+2. Containers.
+3. functions.
+4. Iterators. 
