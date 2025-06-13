@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+#include <algorithm>
+
 bool isAlphaNumberic(char ch)
 {
     if (((65 <= ch) && (ch <= 90)) || ((97 <= ch) && (ch <= 122)) || ((48 <= ch) && (ch <= 57)))
@@ -33,14 +35,19 @@ bool isPalindrome(string str)
     return true;
 }
 
-string removeOccurrences(string s, string part)
+// str = "daabcbaabcbc", part = "abc";
+string removeOccurrences(string str, string part)
 {
-    while (s.find(part) < s.size())
+    while (str.size() >= part.size())
     {
-        int i = s.find(part);
-        s.erase(i, part.size());
+        int idx = str.find(part);
+        if (idx > str.size())
+        {
+            break;
+        }
+        str.erase(idx, part.size());
     }
-    return s;
+    return str;
 }
 
 bool isAlphaNumberic2(char c)
@@ -75,11 +82,29 @@ bool isPalindrome2(string str)
     return true;
 }
 
-string reverseWords(string s)
+string reverseWords(string str)
 {
+    int n = str.size();
+    reverse(str.begin(), str.end());
+    string ans = "";
+
+    for (int i = 0; i < n; i++)
+    {
+        string word = "";
+        while (i < n && str[i] != ' ')
+            word += str[i++];
+        if (word.size() > 0)
+        {
+            reverse(word.begin(), word.end());
+            ans += word + " ";
+        }
+    }
+    ans.pop_back();
+
+    return ans;
 }
 
-bool isFreqSame(int freq1[26], int freq2[])
+bool sameFreq(int freq1[], int freq2[])
 {
     for (int i = 0; i < 26; i++)
     {
@@ -90,26 +115,25 @@ bool isFreqSame(int freq1[26], int freq2[])
     }
     return true;
 }
-
+// abc
 bool checkInclusion(string s1, string s2)
 {
-    // s1 = "ab", s2 = "eidbaooo"
-    int wSize = s1.size();
-    int freq[26] = {0};
-    for (int i = 0; i < s1.length(); i++)
+    int s1Freq[26] = {0};
+    for (int i = 0; i < s1.size(); i++)
     {
-        freq[s1[i] - 'a']++;
+        s1Freq[s1[i] - 'a']++;
     }
-    for (int i = 0; i < s2.length(); i++)
+    int winSize = s1.size();
+    // asdfwaef
+    for (int i = 0; i < s2.size(); i++)
     {
-        int widx = 0, idx = i;
-        int wfreq[26] = {0};
-        while (widx < wSize && idx < s2.size())
+        int winIdx = i;
+        int s2Freq[26] = {0};
+        while (winIdx < (s1.size() + i) && winIdx < s2.size())
         {
-            wfreq[s2[idx] - 'a']++;
-            idx++, widx++;
+            s2Freq[s2[winIdx++] - 'a']++;
         }
-        if (isFreqSame(freq, wfreq))
+        if (sameFreq(s1Freq, s2Freq))
         {
             return true;
         }
@@ -117,15 +141,46 @@ bool checkInclusion(string s1, string s2)
     return false;
 }
 
+string compression(string str)
+{
+    int idx = 0;
+    for (int i = 0; i < str.size();)
+    {
+        char currentChar = str[i];
+        int count = 0;
+        while (i < str.size() && currentChar == str[i])
+            count++, i++;
+        if (count == 1)
+            str[idx++] = currentChar;
+        else
+        {
+            str[idx++] = currentChar;
+            string chars = to_string(count);
+            for (char ch : chars)
+                str[idx++] = ch;
+        }
+    }
+    str.erase(idx);
+    return str;
+}
+
 int main()
 {
-    string str = " A man, a plan, a canal : Panama ";
+    // string str = " A man, a plan, a canal : Panama ";
     // string str = "hih";
-    // string str = "the sky is blue";
+    // string str = "  the sky is blue  ";
 
-    string s1 = "ab", s2 = "eidbaooo";
+    // string s1 = "ab", s2 = "eidbaooo";
 
-    cout << checkInclusion(s1, s2);
+    // char chars[] = {"a", "a", "b", "b", "c", "c", "c"};
+
+    // string s = "daabcbaabcbc", part = "abc";
+    string str = "aabbccc";
+
+    cout << compression(str);
+    // string name = "sandeep";
+    // name.erase(1, 2);
+    // cout << name;
     //"blue is sky the"
 
     return 0;
