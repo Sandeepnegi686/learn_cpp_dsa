@@ -3,8 +3,19 @@
 #include <algorithm>
 #include <limits.h>
 #include <vector>
+#include <unordered_map>
+#include <unordered_set>
+#include <cmath> // for abs
 
 using namespace std;
+
+void printArray(vector<int> array)
+{
+    for (int i = 0; i < array.size(); i++)
+    {
+        cout << array[i] << ", ";
+    }
+}
 
 pair<int, int> findCell(int arr[][3], int row, int col, int key)
 {
@@ -143,13 +154,98 @@ bool searchMatrix(vector<vector<int>> &matrix, int target)
     return false;
 }
 
+vector<int> spiralMatrix(vector<vector<int>> matrix)
+{
+    int n = matrix.size() - 1, m = matrix[0].size() - 1;
+    int top = 0, buttom = n;
+    int left = 0, right = m;
+    vector<int> ans = {};
+    while (top <= buttom && left <= right)
+    {
+        for (int i = left; i <= right; i++)
+        {
+            ans.push_back(matrix[top][i]);
+        }
+        top++;
+        for (int i = top; i <= buttom; i++)
+        {
+            ans.push_back(matrix[i][right]);
+        }
+        right--;
+        if (top <= buttom)
+        {
+
+            for (int i = right; i >= left; i--)
+            {
+                ans.push_back(matrix[buttom][i]);
+            }
+            buttom--;
+        }
+        if (left <= right)
+        {
+
+            for (int i = buttom; i >= top; i--)
+            {
+                ans.push_back(matrix[i][left]);
+            }
+            left++;
+        }
+    }
+    return ans;
+}
+
+vector<int> sum2(vector<int> arr, int target)
+{
+    int n = arr.size();
+    unordered_map<int, int> map;
+    vector<int> ans = {-1, -1};
+    for (int i = 0; i < n; i++)
+    {
+        int second = target - arr[i];
+        if (map.find(second) != map.end())
+        {
+            ans[0] = i;
+            ans[1] = map[second];
+            return ans;
+        }
+        map.insert({arr[i], i});
+    }
+    return ans;
+}
+
+vector<int> missingAndRepeating(vector<int> arr)
+{
+    int n = arr.size();
+    unordered_set<int> set;
+    int dp = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (set.find(arr[i]) != set.end())
+        {
+            dp = arr[i];
+            break;
+        }
+        set.insert(arr[i]);
+    }
+    int mainSum = n * (n + 1) / 2;
+    int arrSum = 0;
+    for (int num : arr)
+    {
+        arrSum += num;
+    }
+    int r = mainSum - arrSum + dp;
+    vector<int> ans = {abs(r), dp};
+    return ans;
+}
+
 int main()
 {
-    int matrix1[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-    int matrix2[4][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
-    vector<vector<int>> matrix3 = {{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}};
-    vector<vector<int>> matrix4 = {{1}};
-    vector<vector<int>> matrix5 = {{1, 2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13, 14, 15}, {16, 17, 18, 19, 20}, {21, 22, 23, 24, 25}};
+    // int matrix1[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    // int matrix2[4][4] = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
+    // vector<vector<int>> matrix3 = {{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}};
+    // vector<vector<int>> matrix4 = {{1}};
+    // vector<vector<int>> matrix5 = {{1, 2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13, 14, 15}, {16, 17, 18, 19, 20}, {21, 22, 23, 24, 25}};
+    vector<vector<int>> matrix6 = {{1, 2, 3, 4, 5, 6}, {7, 8, 9, 10, 11, 12}, {13, 14, 15, 16, 17, 18}, {19, 20, 21, 22, 23, 24}, {25, 26, 27, 28, 29, 30}, {31, 32, 33, 34, 35, 36}};
 
     // pair<int, int> p = {-1, -1};
     // cout << p.first << " " << p.second;
@@ -157,7 +253,12 @@ int main()
     // int sum = diagonalSum(matrix1, 3);
     // cout << sum;
 
-    cout << searchMatrix(matrix3, 4);
+    // cout << spiralMatrix(matrix6);
+    // vector<int> vec = {5, 2, 11, 7, 15};
+    vector<int> vec1 = {4, 3, 6, 2, 1, 1};
+    // vector<int> ans = sum2(vec, 9);
+    vector<int> ans = missingAndRepeating(vec1);
+    printArray(ans);
 
     return 0;
 }
