@@ -194,50 +194,6 @@ vector<int> spiralMatrix(vector<vector<int>> matrix)
     return ans;
 }
 
-vector<int> sum2(vector<int> arr, int target)
-{
-    int n = arr.size();
-    unordered_map<int, int> map;
-    vector<int> ans = {-1, -1};
-    for (int i = 0; i < n; i++)
-    {
-        int second = target - arr[i];
-        if (map.find(second) != map.end())
-        {
-            ans[0] = i;
-            ans[1] = map[second];
-            return ans;
-        }
-        map.insert({arr[i], i});
-    }
-    return ans;
-}
-
-vector<int> missingAndRepeating(vector<int> arr)
-{
-    int n = arr.size();
-    unordered_set<int> set;
-    int dp = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (set.find(arr[i]) != set.end())
-        {
-            dp = arr[i];
-            break;
-        }
-        set.insert(arr[i]);
-    }
-    int mainSum = n * (n + 1) / 2;
-    int arrSum = 0;
-    for (int num : arr)
-    {
-        arrSum += num;
-    }
-    int r = mainSum - arrSum + dp;
-    vector<int> ans = {abs(r), dp};
-    return ans;
-}
-
 int main()
 {
     // int matrix1[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
@@ -245,7 +201,7 @@ int main()
     // vector<vector<int>> matrix3 = {{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}};
     // vector<vector<int>> matrix4 = {{1}};
     // vector<vector<int>> matrix5 = {{1, 2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13, 14, 15}, {16, 17, 18, 19, 20}, {21, 22, 23, 24, 25}};
-    vector<vector<int>> matrix6 = {{1, 2, 3, 4, 5, 6}, {7, 8, 9, 10, 11, 12}, {13, 14, 15, 16, 17, 18}, {19, 20, 21, 22, 23, 24}, {25, 26, 27, 28, 29, 30}, {31, 32, 33, 34, 35, 36}};
+    // vector<vector<int>> matrix6 = {{1, 2, 3, 4, 5, 6}, {7, 8, 9, 10, 11, 12}, {13, 14, 15, 16, 17, 18}, {19, 20, 21, 22, 23, 24}, {25, 26, 27, 28, 29, 30}, {31, 32, 33, 34, 35, 36}};
 
     // pair<int, int> p = {-1, -1};
     // cout << p.first << " " << p.second;
@@ -255,10 +211,14 @@ int main()
 
     // cout << spiralMatrix(matrix6);
     // vector<int> vec = {5, 2, 11, 7, 15};
-    vector<int> vec1 = {4, 3, 6, 2, 1, 1};
+    // vector<int> vec1 = {4, 3, 6, 2, 1, 1};
     // vector<int> ans = sum2(vec, 9);
-    vector<int> ans = missingAndRepeating(vec1);
-    printArray(ans);
+    // vector<int> ans = missingAndRepeating(vec1);
+
+    // printArray(ans);
+
+    vector<int> nums = {3, 1, 3, 4, 2};
+    // cout << findDuplicate(nums);
 
     return 0;
 }
