@@ -1,7 +1,8 @@
 #include <iostream>
-using namespace std;
-
+#include <map>
 #include <algorithm>
+
+using namespace std;
 
 bool isAlphaNumberic(char ch)
 {
@@ -164,6 +165,10 @@ string compression(string str)
     return str;
 }
 
+// void printStringInLexi(string str){
+
+// }
+
 int main()
 {
     // string str = " A man, a plan, a canal : Panama ";
@@ -175,13 +180,36 @@ int main()
     // char chars[] = {"a", "a", "b", "b", "c", "c", "c"};
 
     // string s = "daabcbaabcbc", part = "abc";
-    string str = "aabbccc";
+    // string str = "aabbccc";
 
-    cout << compression(str);
+    // cout << compression(str);
     // string name = "sandeep";
     // name.erase(1, 2);
     // cout << name;
     //"blue is sky the"
+
+    int n;
+    cout << "enter count of strings : ";
+    cin >> n;
+
+    cout << "enter strings : " << "\n";
+
+    string str;
+    map<string, int> mp;
+
+    for (int i = 0; i < n; i++)
+    {
+        cin >> str;
+        mp[str]++;
+    }
+
+    map<string, int>::iterator it;
+
+    for (it = mp.begin(); it != mp.end(); it++)
+    {
+        cout << it->first << " : " << it->second;
+        cout << "\n";
+    }
 
     return 0;
 }

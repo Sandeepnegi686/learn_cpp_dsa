@@ -46,6 +46,7 @@
     "unordered_set": "cpp",
     "regex": "cpp",
     "valarray": "cpp",
-    "climits": "cpp"
+    "climits": "cpp",
+    "map": "cpp"
   }
 }

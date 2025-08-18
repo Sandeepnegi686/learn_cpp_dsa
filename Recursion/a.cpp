@@ -57,14 +57,20 @@ void print1toN(int n)
     cout << n << " ";
 }
 
-int getFibonacci(int n)
+int nthFibonachi(int n)
 {
-    if (n <= 1)
+    if (n == 1)
+    {
         return 0;
-    if (n == 2)
+    }
+    else if (n == 2)
+    {
         return 1;
-
-    return getFibonacci(n - 1) + getFibonacci(n - 2);
+    }
+    else
+    {
+        return nthFibonachi(n - 1) + nthFibonachi(n - 2);
+    }
 }
 
 bool checkSorted(vector<int> arr, int index = 0)
