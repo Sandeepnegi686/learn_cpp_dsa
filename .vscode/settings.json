@@ -47,6 +47,7 @@
     "regex": "cpp",
     "valarray": "cpp",
     "climits": "cpp",
-    "map": "cpp"
+    "map": "cpp",
+    "iomanip": "cpp"
   }
 }
