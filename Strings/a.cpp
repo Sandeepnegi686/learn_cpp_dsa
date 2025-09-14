@@ -1,6 +1,4 @@
-#include <iostream>
-#include <map>
-#include <algorithm>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -188,28 +186,52 @@ int main()
     // cout << name;
     //"blue is sky the"
 
-    int n;
-    cout << "enter count of strings : ";
-    cin >> n;
+    // int n;
+    // cout << "enter count of strings : ";
+    // cin >> n;
 
-    cout << "enter strings : " << "\n";
+    // cout << "enter strings : " << "\n";
+
+    // string str;
+    // map<string, int> mp;
+
+    // for (int i = 0; i < n; i++)
+    // {
+    //     cin >> str;
+    //     mp[str]++;
+    // }
+
+    // map<string, int>::iterator it;
+
+    // for (it = mp.begin(); it != mp.end(); it++)
+    // {
+    //     cout << it->first << " : " << it->second;
+    //     cout << "\n";
+    // }
+
+    // string str1, str2;
+    // cin >> str1 >> str2;
+    // getline(cin, str1);
+    // getline(cin, str2);
+
+    // cout << "string 1 : " << str1 << endl;
+    // cout << "string 2 : " << str2 << endl;
+    // string str;
+    // getline(cin, str);
+
+    // int s = str.size();
+    // string rev = "";
+    // while (s--)
+    // {
+    //     rev.push_back(str[s]);
+    // }
+    // rev.push_back(str[s]);
+    // cout << rev;
 
     string str;
-    map<string, int> mp;
+    cin >> str;
 
-    for (int i = 0; i < n; i++)
-    {
-        cin >> str;
-        mp[str]++;
-    }
-
-    map<string, int>::iterator it;
-
-    for (it = mp.begin(); it != mp.end(); it++)
-    {
-        cout << it->first << " : " << it->second;
-        cout << "\n";
-    }
+    cout << (int)str[str.size() - 1];
 
     return 0;
 }

@@ -194,6 +194,54 @@ vector<int> spiralMatrix(vector<vector<int>> matrix)
     return ans;
 }
 
+int findRow(vector<vector<int>> &mat, int key)
+{
+    int stRow = 0;
+    int endRow = mat.size() - 1;
+    int colSize = mat[0].size();
+
+    while (stRow <= endRow)
+    {
+        int midRow = (stRow + endRow) / 2;
+        if (mat[midRow][0] <= key && key <= mat[midRow][colSize - 1])
+        {
+            return midRow;
+        }
+        else if (mat[stRow][0] <= key && key < mat[midRow][0])
+        {
+            endRow = midRow - 1;
+        }
+        else
+        {
+            stRow = midRow + 1;
+        }
+    }
+    return -1;
+}
+
+bool findCol(vector<vector<int>> &mat, int row, int key)
+{
+    int stCol = 0;
+    int endCol = mat[0].size() - 1;
+    while (stCol <= endCol)
+    {
+        int midCol = (stCol + endCol) / 2;
+        if (mat[row][midCol] == key)
+        {
+            return true;
+        }
+        else if (mat[row][stCol] <= key && key < mat[row][midCol])
+        {
+            endCol = midCol - 1;
+        }
+        else
+        {
+            stCol = midCol + 1;
+        }
+    }
+    return false;
+}
+
 int main()
 {
     // int matrix1[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
@@ -216,9 +264,29 @@ int main()
     // vector<int> ans = missingAndRepeating(vec1);
 
     // printArray(ans);
-
-    vector<int> nums = {3, 1, 3, 4, 2};
+    // vector<int> nums = {3, 1, 3, 4, 2};
     // cout << findDuplicate(nums);
+
+    vector<vector<int>> matrix = {{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}};
+    int key;
+    cin >> key;
+
+    int row = findRow(matrix, key);
+    if (row < 0)
+    {
+        cout << "not in matrix";
+    }
+    else
+    {
+        if (findCol(matrix, row, key))
+        {
+            cout << "found";
+        }
+        else
+        {
+            cout << "not found";
+        }
+    }
 
     return 0;
 }
