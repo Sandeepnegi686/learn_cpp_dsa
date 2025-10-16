@@ -1,11 +1,17 @@
 #include <iostream>
 #include <vector>
-#include <limits.h>
+#include <string>
 #include <algorithm>
+#include <map>
+#include <set>
 #include <unordered_map>
 #include <unordered_set>
-#include <set>
-
+#include <queue>
+#include <stack>
+#include <cmath>
+#include <climits>
+#include <numeric>
+#include <iomanip>
 using namespace std;
 
 void printVector(vector<int> numbers)
@@ -347,15 +353,34 @@ vector<vector<int>> fourSum2(vector<int> arr, int t)
     }
     return ans;
 }
+
+int findMinOps(vector<int> arr)
+{
+    int count = 0;
+    int st = 0, end = arr.size() - 1;
+    while (st < end)
+    {
+        if (arr[st] == arr[end])
+            st++, end--;
+        else if (arr[st] < arr[end])
+        {
+            arr[st + 1] = arr[st] + arr[st + 1];
+            st++;
+            count++;
+        }
+        else
+        {
+            arr[end - 1] += arr[end];
+            end--;
+            count++;
+        }
+    }
+    return count;
+}
+
 int main()
 {
-    vector<int> nums = {10, 2, 3, 4, 5, 7, 8};
-
-    // int ans = nextPermutaion(nums);
-    // cout << ans;
-    int target = 23;
-    vector<vector<int>> ans = fourSum(nums, target);
-    printMatrix(ans);
-
+    vector<int> nums = {1, 4, 5, 9, 1};
+    cout << findMinOps(nums);
     return 0;
 }

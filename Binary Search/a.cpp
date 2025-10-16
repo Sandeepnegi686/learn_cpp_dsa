@@ -347,6 +347,15 @@ int maxCowsDistanceUsingBinarySearch(vector<int> stalls, int k)
     return ans;
 }
 
+int findIndex(vector<int> arr)
+{
+    int n = arr.size();
+    int st = 0, end = n - 1;
+    while (end - st > 1)
+    {
+    }
+}
+
 int main()
 {
     vector<int> nums = {7, 13, 11};

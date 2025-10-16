@@ -80,6 +80,22 @@ bool shouldISwap(pair<int, int> p1, pair<int, int> p2)
     }
 }
 
+bool cmp(pair<int, int> p1, pair<int, int> p2)
+{
+    if (p1.first != p2.first)
+    {
+        if (p1.first < p2.first)
+            return true;
+        return false;
+    }
+    else
+    {
+        if (p1.second < p2.second)
+            return true;
+        return false;
+    }
+}
+
 int main()
 {
 
@@ -177,29 +193,52 @@ int main()
     //     cout << "vector is empty";
     // printVector(vec6);
 
-    vector<pair<int, int>> arr = {};
-    int n = arr.size();
-    arr.push_back({2, 4});
-    arr.push_back({3, 1});
-    arr.push_back({2, 3});
-    arr.push_back({5, 2});
-    arr.push_back({2, 5});
+    // vector<pair<int, int>> arr = {};
+    // arr.push_back({2, 4});
+    // arr.push_back({3, 1});
+    // arr.push_back({2, 3});
+    // arr.push_back({5, 2});
+    // arr.push_back({2, 5});
 
-    for (int i = 0; i < n; i++)
+    // int n = arr.size();
+
+    // for (int i = 0; i < n; i++)
+    // {
+    //     for (int j = i + 1; j < n; j++)
+    //     {
+    //         if (cmp(arr[i], arr[j]))
+    //         {
+    //             sort(arr.begin(), arr.end(), cmp);
+    //         }
+    //     }
+    // }
+
+    // for (pair<int, int> &p : arr)
+    // {
+    //     cout << p.first << ' ' << p.second << endl;
+    // }
+
+    vector<int> arr = {6, 5, 8, 2, 5, 7, 12, 42, 3};
+    sort(arr.begin(), arr.end());
+
+    for (int n : arr)
     {
-        for (int j = 0; j < n; j++)
-        {
-            if (shouldISwap(arr[i], arr[j]))
-            {
-                swap(arr[i], arr[j]);
-            }
-        }
+        cout << n << ' ';
+    }
+    cout << endl;
+    vector<int>::iterator it;
+    it = upper_bound(arr.begin() + 3, arr.end() - 3, 41);
+
+    if (it == arr.end())
+    {
+        cout << "not found";
+    }
+    else
+    {
+        cout << "upper Bound : " << *(it);
     }
 
-    for (pair<int, int> &p : arr)
-    {
-        cout << p.first << ' ' << p.second << endl;
-    }
+    cout << "random no." << rand();
 
     return 0;
 }
