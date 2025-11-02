@@ -62,33 +62,56 @@ int binaryToDecimal(int number)
 // }
 
 // Print All Subsets using Bit Masking
+// int main()
+// {
+//     vector<int> a = {2, 4, 8, 24};
+//     int n = a.size();
+//     vector<vector<int>> allSubsets;
+
+//     for (int i = 0; i < (1 << n); i++)
+//     {
+//         vector<int> ar;
+//         for (int j = 0; j < n; j++)
+//         {
+//             if (((i >> j) & 1) != 0)
+//             {
+//                 ar.push_back(a[j]);
+//             }
+//         }
+//         allSubsets.push_back(ar);
+//     }
+
+//     for (auto sub : allSubsets)
+//     {
+//         for (auto n : sub)
+//         {
+//             cout << n << ' ';
+//         }
+//         cout << '\n';
+//     }
+
+//     return 0;
+// }
+int calcPow(int n)
+{
+    int result = 0;
+    int d = n;
+    while (d > 0)
+    {
+        int times = 0;
+        while ((1 << times) <= d)
+        {
+            times++;
+        }
+        times--;
+        d = d - (1 << times);
+        result += (n << times);
+    }
+    return result;
+}
+
 int main()
 {
-    vector<int> a = {2, 4, 8, 24};
-    int n = a.size();
-    vector<vector<int>> allSubsets;
-
-    for (int i = 0; i < (1 << n); i++)
-    {
-        vector<int> ar;
-        for (int j = 0; j < n; j++)
-        {
-            if (((i >> j) & 1) != 0)
-            {
-                ar.push_back(a[j]);
-            }
-        }
-        allSubsets.push_back(ar);
-    }
-
-    for (auto sub : allSubsets)
-    {
-        for (auto n : sub)
-        {
-            cout << n << ' ';
-        }
-        cout << '\n';
-    }
-
+    cout << calcPow(5);
     return 0;
 }
